@@ -20,7 +20,7 @@
       justify-content: center;
       align-items: center;
       overflow-y: auto;
-      padding: 5vw;
+      padding    padding: 5vw;
       position: relative;
     }
 
@@ -185,6 +185,80 @@
       transform: scale(1);
     }
 
+    /* Панель с шаблонами */
+    .template-panel {
+      display: none;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .chat-box:empty + textarea + .template-panel {
+      display: flex;
+    }
+
+    .template-button {
+      padding: 8px 16px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .template-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .template-dropdown {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 12, 41, 0.95);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 106, 0, 0.3);
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #ff6a00 transparent;
+    }
+
+    .template-dropdown::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .template-dropdown::-webkit-scrollbar-thumb {
+      background: #ff6a00;
+      border-radius: 3px;
+    }
+
+    .template-button:hover .template-dropdown {
+      display: block;
+    }
+
+    .template-item {
+      padding: 8px 16px;
+      font-size: 14px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .template-item:hover {
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+    }
+
     /* Адаптивность */
     @media (max-width: 600px) {
       .chat-container {
@@ -212,6 +286,15 @@
         padding: 10px;
       }
 
+      .template-button {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+
+      .template-item {
+        font-size: 12px;
+      }
+
       .particle {
         width: 3px !important;
         height: 3px !important;
@@ -235,6 +318,72 @@
   <div class="chat-container">
     <div class="chat-box" id="chat-box"></div>
     <textarea id="prompt-input" placeholder="Спроси что-нибудь у AG AI-Mini..."></textarea>
+    <div class="template-panel" id="template-panel">
+      <div class="template-button">
+        Артефакты
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Покажи крутой артефакт из древности">Покажи крутой артефакт из древности</div>
+          <div class="template-item" data-prompt="Расскажи про загадочные артефакты Египта">Расскажи про загадочные артефакты Египта</div>
+          <div class="template-item" data-prompt="Какие артефакты нашли в Помпеях?">Какие артефакты нашли в Помпеях?</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Код
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Напиши простой код на Python для игры 'Крестики-нолики'">Напиши простой код на Python для игры "Крестики-нолики"</div>
+          <div class="template-item" data-prompt="Как сделать анимацию на CSS?">Как сделать анимацию на CSS?</div>
+          <div class="template-item" data-prompt="Покажи пример кода для API на JavaScript">Покажи пример кода для API на JavaScript</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Новый
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Что нового в мире технологий?">Что нового в мире технологий?</div>
+          <div class="template-item" data-prompt="Какие новые фильмы вышли в этом году?">Какие новые фильмы вышли в этом году?</div>
+          <div class="template-item" data-prompt="Расскажи про новые открытия в космосе">Расскажи про новые открытия в космосе</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Анализировать изображение
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Опиши, что на этом изображении">Опиши, что на этом изображении</div>
+          <div class="template-item" data-prompt="Какой стиль у этого изображения?">Какой стиль у этого изображения?</div>
+          <div class="template-item" data-prompt="Что за объект на картинке?">Что за объект на картинке?</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Суммируйте текст
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Суммируй этот текст в 3 предложения">Суммируй этот текст в 3 предложения</div>
+          <div class="template-item" data-prompt="Сделай краткий пересказ текста">Сделай краткий пересказ текста</div>
+          <div class="template-item" data-prompt="Выдели главную мысль текста">Выдели главную мысль текста</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Получить совет
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Дай совет, как лучше учить программирование">Дай совет, как лучше учить программирование</div>
+          <div class="template-item" data-prompt="Как справиться со стрессом?">Как справиться со стрессом?</div>
+          <div class="template-item" data-prompt="Что делать, если не можешь уснуть?">Что делать, если не можешь уснуть?</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Помогите мне написать
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Напиши письмо с благодарностью">Напиши письмо с благодарностью</div>
+          <div class="template-item" data-prompt="Составь текст для поста в соцсети">Составь текст для поста в соцсети</div>
+          <div class="template-item" data-prompt="Напиши короткий рассказ на тему космоса">Напиши короткий рассказ на тему космоса</div>
+        </div>
+      </div>
+      <div class="template-button">
+        Мозговой штурм
+        <div class="template-dropdown">
+          <div class="template-item" data-prompt="Придумай идеи для стартапа">Придумай идеи для стартапа</div>
+          <div class="template-item" data-prompt="Дай идеи для дизайна сайта">Дай идеи для дизайна сайта</div>
+          <div class="template-item" data-prompt="Как сделать игру интереснее?">Как сделать игру интереснее?</div>
+        </div>
+      </div>
+    </div>
     <button onclick="sendPrompt()">Отправить</button>
   </div>
 
@@ -254,7 +403,7 @@
     }
 
     // Логика чата
-    const HF_API_TOKEN = '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'; // Проверь токен
+    const HF_API_TOKEN = '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'; // Проверь токен
     const MODEL = 'mistralai/Mixtral-8x7B-Instruct-v0.1';
 
     const chatBox = document.getElementById('chat-box');
@@ -317,8 +466,19 @@
         sendPrompt();
       }
     });
+
+    // Логика шаблонов
+    const templateItems = document.querySelectorAll('.template-item');
+    templateItems.forEach(item => {
+      item.addEventListener('click', () => {
+        promptInput.value = item.dataset.prompt;
+        promptInput.focus();
+      });
+    });
   </script>
 </body>
 </html>
+
+
 
 
