@@ -20,7 +20,7 @@
       justify-content: center;
       align-items: center;
       overflow-y: auto;
-      padding    padding: 5vw;
+      padding: 5vw;
       position: relative;
     }
 
@@ -259,6 +259,18 @@
       background: linear-gradient(90deg, #ff6a00, #ee0979);
     }
 
+    /* Надпись с предупреждением */
+    .disclaimer {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+      -webkit-background-clip: text;
+      color: transparent;
+      padding: 5px 0;
+      margin-top: 10px;
+    }
+
     /* Адаптивность */
     @media (max-width: 600px) {
       .chat-container {
@@ -293,6 +305,10 @@
 
       .template-item {
         font-size: 12px;
+      }
+
+      .disclaimer {
+        font-size: 10px;
       }
 
       .particle {
@@ -385,6 +401,7 @@
       </div>
     </div>
     <button onclick="sendPrompt()">Отправить</button>
+    <div class="disclaimer">AI may make mistakes. Please verify important information.</div>
   </div>
 
   <script>
@@ -403,7 +420,7 @@
     }
 
     // Логика чата
-    const HF_API_TOKEN = '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'; // Проверь токен
+    const HF_API_TOKEN = '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';
     const MODEL = 'mistralai/Mixtral-8x7B-Instruct-v0.1';
 
     const chatBox = document.getElementById('chat-box');
@@ -478,7 +495,5 @@
   </script>
 </body>
 </html>
-
-
 
 
