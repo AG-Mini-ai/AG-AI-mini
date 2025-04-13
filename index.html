@@ -733,7 +733,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            inputs: `Ты AG AI-Mini, умный ассистент, создан XGames Super Corporation LLC. Отвечай кратко, по-человечески, на русском, как обычный чел. Обращайся на "ты". Вот вопрос: ${prompt}`,
+            inputs: `Ты AG AI-Mini, умный ассистент, создан XGames Super Corporation LLC. Отвечай кратко, по-человечески, на русском, как обычный чел. Обращайся на "ты". Вот вопрос, на который нужно ответить на русском языке: ${prompt}`,
             parameters: { max_new_tokens: 200, return_full_text: false }
           })
         });
